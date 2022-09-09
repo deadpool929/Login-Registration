@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<style>
+    body {
+        background-color: bisque;
+    }
+
+    h1 {
+        display: flex;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: blueviolet;
+        font-size: 45px;
+        justify-content: center;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+
+
+
+    }
+
+
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+
+    }
+
+    form input {
+        width: 500px;
+        font-size: 20px;
+        padding: 10px;
+        margin: 10px 0px;
+        border-radius: 10px;
+        border: none;
+        border: 1px solid black;
+
+    }
+
+    #submit-btn {
+        width: 200px;
+        background-color: rgb(209, 26, 181);
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-weight: 700px;
+        font-size: 25px;
+    }
+</style>
+
+<body>
+    <h1>Registration Form</h1>
+    <div class="form-container">
+        <form action="#" method="post">
+            <input type="text" name="fullname" placeholder="Enter your Fullname" minlength="1" maxlength="50"
+                onkeypress="return AvoidSpace(event)" required />
+            <input type="email" name="email" placeholder="Enter your email" required />
+            <input type="tel" name="phone" placeholder="Enter your Phone Number" pattern="[0-9]{10}" required />
+            <input type="password" name="password" placeholder="Enter your password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required id="password" />
+
+            <input type="password" name="confirm_password" placeholder="Enter your password again"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required id="confirm_password" />
+
+            <input type="checkbox" onclick="myFunction()">Show Password
+            <input type="checkbox" onclick="myFunction1()">Show Confirm Password
+
+
+            <input type="submit" name="submit" value="Submit" id="submit-btn" />
+
+
+</html>
+<script>
+    function AvoidSpace(event) {
+        var k = event ? event.which : window.event.keyCode;
+        if (k == 32) return false;
+    }
+
+    var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function myFunction1() {
+        var x = document.getElementById("confirm_password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+
+</script>
